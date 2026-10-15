@@ -1,0 +1,12 @@
+{
+    "python-envs.pythonProjects": [
+        {
+            "path": ".",
+            "envManager": "ms-python.python:venv",
+            "packageManager": "ms-python.python:pip"
+        }
+    ],
+    "chat.planAgent.defaultModel": "deepseek-coder (ollama)",
+    "inlineChat.defaultModel": "deepseek-r1:7b (ollama)",
+    "chat.exploreAgent.defaultModel": "deepseek-r1:7b (ollama)"
+}

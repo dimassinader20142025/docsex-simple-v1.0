@@ -1,0 +1,31 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "type": "pwa-chrome",
+            "request": "launch",
+            "name": "Docsexprime: open localhost 8080",
+            "url": "http://127.0.0.1:8080",
+            "webRoot": "${workspaceFolder}",
+            "preLaunchTask": "Docsexprime: start server 8080"
+        },
+        {
+            "type": "debugpy",
+            "request": "launch",
+            "name": "Docsexprime: FastAPI server only",
+            "module": "uvicorn",
+            "args": [
+                "server:app",
+                "--host",
+                "127.0.0.1",
+                "--port",
+                "8080"
+            ],
+            "cwd": "${workspaceFolder}",
+            "envFile": "${workspaceFolder}/.env",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}

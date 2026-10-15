@@ -1,0 +1,10 @@
+.env
+.env.example
+articles.db
+content.db
+*.log
+__pycache__/
+uploads/
+.venv/
+tools/*_results.json
+tools/all_test_runs*.json

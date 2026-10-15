@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Docsexprime admin dashboard — manage articles and media.">
+  <meta name="theme-color" content="#eef3f8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1623" media="(prefers-color-scheme: dark)">
+  <title>Docsexprime Admin</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="admin-page">
+  <div id="app" class="admin-shell">
+    <header class="admin-header">
+      <div>
+        <h1>Docsexprime Admin</h1>
+        <p>Articles, media, videos and documents</p>
+      </div>
+      <button id="btnLogout" class="admin-button ghost" style="display:none">Logout</button>
+    </header>
+
+    <section id="login" class="admin-panel auth-panel">
+      <h2>Login</h2>
+      <label for="username" class="visually-hidden">Username</label>
+      <input id="username" placeholder="username" autocomplete="username" aria-label="Username">
+      <label for="password" class="visually-hidden">Password</label>
+      <input id="password" type="password" placeholder="password" autocomplete="current-password" aria-label="Password">
+      <button id="btnLogin" class="admin-button primary">Login</button>
+      <div id="loginMsg" class="admin-message" aria-live="polite"></div>
+    </section>
+
+    <main id="dashboard" class="admin-layout" style="display:none">
+      <section class="admin-panel">
+        <div class="panel-title">
+          <h2>Articles</h2>
+          <button id="btnNew" class="admin-button primary">New Article</button>
+        </div>
+        <div id="articlesList" class="admin-list"></div>
+      </section>
+
+      <section id="editor" class="admin-panel editor-panel" style="display:none">
+        <div class="panel-title">
+          <h2 id="editorTitle">New Article</h2>
+          <button id="btnCancel" class="admin-button ghost">Close</button>
+        </div>
+
+        <div class="admin-grid two">
+          <label>ID<input id="articleId" placeholder="article-id"></label>
+          <label>Topic<input id="articleTopic" placeholder="topic"></label>
+          <label>Minutes<input id="articleMinutes" placeholder="minutes" type="number"></label>
+        </div>
+
+        <div class="admin-grid three">
+          <label>Title FR<textarea id="titleFr"></textarea></label>
+          <label>Title AR<textarea id="titleAr"></textarea></label>
+          <label>Title EN<textarea id="titleEn"></textarea></label>
+          <label>Excerpt FR<textarea id="excerptFr"></textarea></label>
+          <label>Excerpt AR<textarea id="excerptAr"></textarea></label>
+          <label>Excerpt EN<textarea id="excerptEn"></textarea></label>
+          <label>Body FR<textarea id="bodyFr" placeholder="lines separated by ||"></textarea></label>
+          <label>Body AR<textarea id="bodyAr" placeholder="lines separated by ||"></textarea></label>
+          <label>Body EN<textarea id="bodyEn" placeholder="lines separated by ||"></textarea></label>
+        </div>
+
+        <section class="media-editor">
+          <div class="panel-title">
+            <h3>Structured media</h3>
+            <div class="media-actions">
+              <input id="mediaFile" type="file" accept="image/png,image/jpeg,image/webp,image/gif,video/mp4,video/webm,application/pdf,text/plain">
+              <button id="btnUpload" class="admin-button">Upload</button>
+            </div>
+          </div>
+          <div id="uploadResult" class="admin-message"></div>
+
+          <div class="admin-grid two">
+            <label>Main image
+              <input id="mediaHero" placeholder="/uploads/image.jpg">
+            </label>
+            <div class="media-drop-actions">
+              <button class="admin-button" type="button" data-add-target="hero">Use selected as main image</button>
+              <button class="admin-button danger" type="button" data-clear-target="hero">Clear main image</button>
+            </div>
+          </div>
+
+          <div class="admin-grid three media-fields">
+            <label>Gallery images
+              <textarea id="mediaGallery" placeholder="one URL per line"></textarea>
+              <span class="field-actions">
+                <button class="admin-button" type="button" data-add-target="gallery">Add selected</button>
+                <button class="admin-button danger" type="button" data-clear-target="gallery">Clear</button>
+              </span>
+            </label>
+            <label>Videos
+              <textarea id="mediaVideos" placeholder="one URL per line"></textarea>
+              <span class="field-actions">
+                <button class="admin-button" type="button" data-add-target="videos">Add selected</button>
+                <button class="admin-button danger" type="button" data-clear-target="videos">Clear</button>
+              </span>
+            </label>
+            <label>Documents / PDF
+              <textarea id="mediaDocuments" placeholder="one URL per line"></textarea>
+              <span class="field-actions">
+                <button class="admin-button" type="button" data-add-target="documents">Add selected</button>
+                <button class="admin-button danger" type="button" data-clear-target="documents">Clear</button>
+              </span>
+            </label>
+          </div>
+
+          <div id="mediaPreview" class="media-preview"></div>
+        </section>
+
+        <div class="editor-actions">
+          <button id="btnSave" class="admin-button primary">Save article</button>
+        </div>
+      </section>
+
+      <section class="admin-panel media-library-panel">
+        <div class="panel-title">
+          <h2>Media library</h2>
+          <button id="btnRefreshUploads" class="admin-button">Refresh</button>
+        </div>
+        <p class="admin-help">Select a file, then add it to the current article as main image, gallery, video, or document.</p>
+        <div id="selectedMedia" class="admin-message">No media selected.</div>
+        <div id="uploadsList" class="uploads-list"></div>
+      </section>
+    </main>
+  </div>
+  <script src="/admin.js"></script>
+</body>
+</html>
